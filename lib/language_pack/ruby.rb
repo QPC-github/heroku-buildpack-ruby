@@ -18,6 +18,7 @@ class LanguagePack::Ruby < LanguagePack::Base
   LIBYAML_PATH         = "libyaml-#{LIBYAML_VERSION}"
   BUNDLER_VERSION      = "1.15.1"
   BUNDLER_GEM_PATH     = "bundler-#{BUNDLER_VERSION}"
+  BUNDLER_CONFIG_PATH  = File.expand_path("../../../config/bundler.yml", __FILE__)
   RBX_BASE_URL         = "http://binaries.rubini.us/heroku"
   NODE_BP_PATH         = "vendor/node/bin"
 
@@ -37,6 +38,10 @@ class LanguagePack::Ruby < LanguagePack::Base
     self.class.bundler
   end
 
+  def load_bundler_config
+    YAML.load_file(BUNDLER_CONFIG_PATH) || {}
+  end
+
   def initialize(build_path, cache_path=nil)
     super(build_path, cache_path)
     @fetchers[:mri]    = LanguagePack::Fetcher.new(VENDOR_URL, @stack)
@@ -44,6 +49,7 @@ class LanguagePack::Ruby < LanguagePack::Base
     @node_installer    = LanguagePack::Helpers::NodeInstaller.new
     @yarn_installer    = LanguagePack::Helpers::YarnInstaller.new
     @jvm_installer     = LanguagePack::Helpers::JvmInstaller.new(slug_vendor_jvm, @stack)
+    @bundler_config    = load_bundler_config
   end
 
   def name
@@ -573,6 +579,11 @@ WARNING
         else
           # using --deployment is preferred if we can
           bundle_command += " --deployment"
+        end
+
+        topic("Configuring bundler")
+        bundler_config.each do |k,v|
+          run("#{bundle_bin} config #{k} #{v}")
         end
 
         topic("Installing dependencies using bundler #{bundler.version}")
