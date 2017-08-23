@@ -582,7 +582,7 @@ WARNING
         end
 
         topic("Configuring bundler")
-        bundler_config.each do |k,v|
+        @bundler_config.each do |k,v|
           run("#{bundle_bin} config #{k} #{v}")
         end
 
