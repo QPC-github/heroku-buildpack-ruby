@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/hone/ruby-git.git
+  remote: https://github.com/hone/ruby-git.git
   revision: 264836fcff3c037d8d8fc44bd770b150b46fdc4e
   branch: master
   specs:
@@ -42,7 +42,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.4)
-    json (2.0.4)
+    json (2.3.0)
     mime-types (2.99.3)
     minitest (5.10.2)
     moneta (0.8.1)
@@ -87,7 +87,7 @@ DEPENDENCIES
   excon
   git!
   heroku_hatchet (~> 3.0.1)
-  json (~> 2.0.2)
+  json (~> 2.3.0)
   netrc
   parallel_tests
   rake
