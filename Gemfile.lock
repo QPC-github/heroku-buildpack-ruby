@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/hone/ruby-git.git
+  remote: https://github.com/hone/ruby-git.git
   revision: 264836fcff3c037d8d8fc44bd770b150b46fdc4e
   branch: master
   specs:
@@ -21,7 +21,7 @@ GEM
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
-    excon (0.57.0)
+    excon (0.71.0)
     heroics (0.0.22)
       erubis (~> 2.0)
       excon
