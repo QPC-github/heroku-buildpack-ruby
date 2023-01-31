@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/hone/ruby-git.git
+  remote: https://github.com/hone/ruby-git.git
   revision: 264836fcff3c037d8d8fc44bd770b150b46fdc4e
   branch: master
   specs:
@@ -55,7 +55,7 @@ GEM
       heroics (~> 0.0.22)
       moneta (~> 0.8.1)
     progress (2.4.0)
-    rake (12.0.0)
+    rake (12.3.3)
     repl_runner (0.0.3)
       activesupport
     rest-client (1.8.0)
